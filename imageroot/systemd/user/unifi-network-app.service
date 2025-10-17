@@ -6,7 +6,7 @@
 [Unit]
 Description=Podman  unifi-network-app.service
 BindsTo=unifi-network.service
-After=unifi-network.service
+After=unifi-network.service mongo-app.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
@@ -15,16 +15,22 @@ EnvironmentFile=-%S/state/smarthost.env
 WorkingDirectory=%S/state
 Restart=always
 TimeoutStopSec=70
-ExecStartPre=/bin/mkdir -p tmp
 ExecStartPre=/bin/rm -f %t/unifi-network-app.pid %t/unifi-network-app.ctr-id
 ExecStartPre=-runagent discover-smarthost
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/unifi-network-app.pid \
     --cidfile %t/unifi-network-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/unifi-network.pod-id --replace -d --name  unifi-network-app \
-    --volume unifi-network-app:/var/www/html/:Z \
-    --volume ./tmp:/tmp:Z \
-    --env ENV_VAR=test \
-    ${NGINX_IMAGE}
+    --volume unifi-network-app:/config:z \
+    --env PUID=1000 \
+    --env PGID=1000 \
+    --env TZ=Etc/UTC \
+    --env MONGO_USER=unifi \
+    --env MONGO_PASS= \
+    --env MONGO_HOST=mongo-app \
+    --env MONGO_PORT=27017 \
+    --env MONGO_DBNAME=unifi \
+    --env MONGO_AUTHSOURCE=admin \
+    ${UNIFI_NETWORK_APPLICATION_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/unifi-network-app.ctr-id -t 10
 ExecReload=/usr/bin/podman kill -s HUP unifi-network-app
 SyslogIdentifier=%u
