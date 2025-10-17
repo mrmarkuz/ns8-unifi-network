@@ -1,0 +1,36 @@
+#
+# Copyright (C) 2022 Nethesis S.r.l.
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+
+[Unit]
+Description=Podman  unifi-network-app.service
+BindsTo=unifi-network.service
+After=unifi-network.service
+
+[Service]
+Environment=PODMAN_SYSTEMD_UNIT=%n
+EnvironmentFile=%S/state/environment
+EnvironmentFile=-%S/state/smarthost.env
+WorkingDirectory=%S/state
+Restart=always
+TimeoutStopSec=70
+ExecStartPre=/bin/mkdir -p tmp
+ExecStartPre=/bin/rm -f %t/unifi-network-app.pid %t/unifi-network-app.ctr-id
+ExecStartPre=-runagent discover-smarthost
+ExecStart=/usr/bin/podman run --conmon-pidfile %t/unifi-network-app.pid \
+    --cidfile %t/unifi-network-app.ctr-id --cgroups=no-conmon \
+    --pod-id-file %t/unifi-network.pod-id --replace -d --name  unifi-network-app \
+    --volume unifi-network-app:/var/www/html/:Z \
+    --volume ./tmp:/tmp:Z \
+    --env ENV_VAR=test \
+    ${NGINX_IMAGE}
+ExecStop=/usr/bin/podman stop --ignore --cidfile %t/unifi-network-app.ctr-id -t 10
+ExecReload=/usr/bin/podman kill -s HUP unifi-network-app
+SyslogIdentifier=%u
+ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/unifi-network-app.ctr-id
+PIDFile=%t/unifi-network-app.pid
+Type=forking
+
+[Install]
+WantedBy=default.target
