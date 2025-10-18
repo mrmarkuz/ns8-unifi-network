@@ -8,10 +8,6 @@
 import agent
 import os
 
-agent.add_public_service(os.environ['MODULE_ID'], [
-    "8080/tcp",
-    "3478/udp",
-    "10001/udp"
-])
+agent.remove_public_service(os.environ['MODULE_ID'])
 
 # Ignore exit code
