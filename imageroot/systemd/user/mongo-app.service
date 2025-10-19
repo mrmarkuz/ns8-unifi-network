@@ -16,10 +16,12 @@ TimeoutStopSec=70
 ExecStartPre=/bin/rm -f %t/mongo-app.pid %t/mongo-app.ctr-id
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/mongo-app.pid \
     --cidfile %t/mongo-app.ctr-id --cgroups=no-conmon \
-    --pod-id-file %t/meshcentral.pod-id --replace -d --name mongo-app \
+    --pod-id-file %t/unifi-network.pod-id --replace -d --name mongo-app \
     --volume mongo-app:/data/db:z \
     --volume mongo-configdb:/data/configdb:z \
-    --volume ./init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro \
+    --volume %S/state/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro \
+    --env MONGO_INITDB_ROOT_USERNAME=unifi \
+    --env MONGO_INITDB_ROOT_PASSWORD=unifi \
     ${MONGO_IMAGE}
 ExecStop=/usr/bin/podman stop --ignore --cidfile %t/mongo-app.ctr-id -t 10
 ExecStopPost=/usr/bin/podman rm --ignore -f --cidfile %t/mongo-app.ctr-id

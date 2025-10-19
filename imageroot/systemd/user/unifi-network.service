@@ -10,8 +10,8 @@
 
 [Unit]
 Description=Podman unifi-network.service
-Requires=unifi-network-app.service
-Before=unifi-network-app.service
+Requires=mongo-app.service unifi-network-app.service
+Before=mongo-app.service unifi-network-app.service
 
 [Service]
 Environment=PODMAN_SYSTEMD_UNIT=%n
