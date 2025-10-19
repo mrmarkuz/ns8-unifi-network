@@ -10,3 +10,5 @@ set -e
 if ! systemctl --user -q is-active unifi-network.service; then
     exit 0
 fi
+
+podman exec mongo-app mongodump --archive > unifi.archive
