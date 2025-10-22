@@ -1,19 +1,20 @@
 {
-  "name": "unifi-network",
+  "name": "Unifi Network Application",
   "description": {
-    "en": "My unifi-network module"
+    "en": "Unifi Network Application is a software platform from Ubiquiti for managing networks, gateways, switches, and wireless access points.",
+    "de": "Unifi Network Application ist eine Software Plattform von Ubiquiti um Netzwerke, Gateways, Switches und Access Points zu verwalten."
   },
-  "categories": [],
+  "categories": ["system_administration"],
   "authors": [
     {
-      "name": "Name Surname",
-      "email": "author@yourmail.org"
+      "name": "Markus Neuberger",
+      "email": "dev@markusneuberger.at"
     }
   ],
   "docs": {
-    "documentation_url": "https://docs.unifi-network.com/",
-    "bug_url": "https://github.com/NethServer/dev",
-    "code_url": "https://github.com/author/ns8-unifi-network"
+    "documentation_url": "https://docs.linuxserver.io/images/docker-unifi-network-application/",
+    "bug_url": "https://community.nethserver.org",
+    "code_url": "https://github.com/mrmarkuz/ns8-unifi-network"
   },
-  "source": "ghcr.io/nethserver/unifi-network"
+  "source": "ghcr.io/mrmarkuz/unifi-network"
 }
