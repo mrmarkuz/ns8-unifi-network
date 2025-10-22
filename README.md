@@ -4,14 +4,16 @@ This is the NS8 implementation of the [Unifi Network Application](https://hub.do
 
 ## Install
 
-Instantiate the module with:
+The app is installable via Software Center after adding the [mrmarkuz repo](https://repo.mrmarkuz.com/).
 
-    add-module ghcr.io/mrmarkuz/unifi-network:latest 1
+On CLI you could instantiate the module with:
+
+    add-module ghcr.io/mrmarkuz/unifi-network:1.0.0 1
 
 The output of the command will return the instance name.
 Output example:
 
-    {"module_id": "unifi-network1", "image_name": "unifi-network", "image_url": "ghcr.io/nethserver/unifi-network:latest"}
+    {"module_id": "unifi-network1", "image_name": "unifi-network", "image_url": "ghcr.io/mrmarkuz/unifi-network:1.0.0"}
 
 ## Configure
 
