@@ -13,8 +13,8 @@ mkdir -vp initdb.d
 mv -v unifi.archive initdb.d
 #do the bash file to restore and exit once done
 cat - >initdb.d/zz_unifi_restore.sh <<'EOS'
-mongosh --eval 'db.dropDatabase();' unifi
-mongorestore --archive=/docker-entrypoint-initdb.d/unifi.archive
+mongosh -u unifi -p unifi --eval 'use unifi' --eval 'db.dropDatabase();'
+sh -c 'mongorestore -u unifi -p unifi --archive=/docker-entrypoint-initdb.d/unifi.archive'
 exit 0
 EOS
 
@@ -29,6 +29,8 @@ podman run \
   --interactive \
   --network=none \
   --volume ./initdb.d:/docker-entrypoint-initdb.d:z \
-  --volume mongo-app:/data/db:Z \
+  --volume mongo-app:/data/db:z \
+  --env MONGO_INITDB_ROOT_USERNAME=unifi \
+  --env MONGO_INITDB_ROOT_PASSWORD=unifi \
   --replace --name=restore_db \
   ${MONGO_IMAGE}
