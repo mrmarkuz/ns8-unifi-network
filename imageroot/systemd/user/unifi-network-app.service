@@ -21,8 +21,6 @@ ExecStart=/usr/bin/podman run --conmon-pidfile %t/unifi-network-app.pid \
     --cidfile %t/unifi-network-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/unifi-network.pod-id --replace -d --name  unifi-network-app \
     --volume unifi-network-app:/config:z \
-    --env PUID=1000 \
-    --env PGID=1000 \
     --env TZ=Etc/UTC \
     --env MONGO_USER=unifi \
     --env MONGO_PASS=unifi \
