@@ -33,6 +33,16 @@
               ref="host"
             >
             </cv-text-input>
+            <cv-text-input
+              :label="$t('settings.unifi-network_port')"
+              placeholder="8080"
+              v-model.trim="port"
+              class="mg-bottom"
+              :invalid-message="$t(error.port)"
+              :disabled="loading.getConfiguration || loading.configureModule"
+              ref="port"
+            >
+            </cv-text-input>
             <cv-toggle
               value="letsEncrypt"
               :label="$t('settings.lets_encrypt')"
@@ -123,6 +133,7 @@ export default {
       },
       urlCheckInterval: null,
       host: "",
+      port: "",
       isLetsEncryptEnabled: false,
       isHttpToHttpsEnabled: true,
       loading: {
@@ -133,6 +144,7 @@ export default {
         getConfiguration: "",
         configureModule: "",
         host: "",
+        port: "",
         lets_encrypt: "",
         http2https: "",
       },
@@ -200,6 +212,7 @@ export default {
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
       this.host = config.host;
+      this.port = config.port;
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
 
@@ -269,6 +282,7 @@ export default {
           action: taskAction,
           data: {
             host: this.host,
+            port: this.port,
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },
