@@ -9,9 +9,9 @@ import agent
 import os
 
 agent.add_public_service(os.environ['MODULE_ID'], [
-    "8080/tcp",
+    os.environ['PORT']+"/tcp",
     "3478/udp",
     "10001/udp"
-])
+], replace_ports=True)
 
 # Ignore exit code

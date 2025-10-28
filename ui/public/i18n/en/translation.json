@@ -29,6 +29,7 @@
     "configure_instance": "Configure {instance}",
     "save": "Save",
     "unifi-network_fqdn": "unifi-network hostname (FQDN)",
+    "unifi-network_port": "Device communication port",
     "lets_encrypt": "Request LE Certificate",
     "http_to_https": "Force HTTPS",
     "enabled": "Enabled",
