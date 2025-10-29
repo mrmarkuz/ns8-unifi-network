@@ -6,6 +6,7 @@
     "examples": [
         {
             "host": "unifi-network.domain.org",
+            "port": 8080,
             "http2https": true,
             "lets_encrypt": true
         }
@@ -13,6 +14,7 @@
     "type": "object",
     "required": [
         "host",
+        "port",
         "http2https",
         "lets_encrypt"
     ],
@@ -23,12 +25,19 @@
             "format": "hostname",
             "pattern": "\\."
         },
-        "lets_encrypt": {
+	    "port": {
+            "type": "integer",
+            "title": "port",
+            "description": "The port for device communication",
+            "minimum": 1024,
+            "maximum": 65535
+        },
+	    "lets_encrypt": {
             "type": "boolean",
             "title": "Let's Encrypt certificate",
             "description": "Request a valid Let's Encrypt certificate."
         },
-        "http2https": {
+	    "http2https": {
             "type": "boolean",
             "title": "HTTP to HTTPS redirection",
             "description": "Redirect all the HTTP requests to HTTPS"

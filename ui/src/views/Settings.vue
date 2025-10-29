@@ -36,6 +36,7 @@
             <cv-text-input
               :label="$t('settings.unifi-network_port')"
               placeholder="8080"
+              type="number"
               v-model.trim="port"
               class="mg-bottom"
               :invalid-message="$t(error.port)"

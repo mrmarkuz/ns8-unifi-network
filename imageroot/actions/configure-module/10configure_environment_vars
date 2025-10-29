@@ -12,6 +12,7 @@ import agent
 # Try to parse the stdin as JSON.
 # If parsing fails, output everything to stderr
 data = json.load(sys.stdin)
+port = data.get('port',8080)
 
 # Set Devices Port
-agent.set_env("PORT",data.get("port",8080))
+agent.set_env("PORT",port)

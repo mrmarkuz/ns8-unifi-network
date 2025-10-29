@@ -15,7 +15,7 @@ import errno
 
 # retrieve json data
 data = json.load(sys.stdin)
-port = data['port']
+port = data['port'] 
 
 # set error validation
 agent.set_weight(os.path.basename(__file__), 0)
