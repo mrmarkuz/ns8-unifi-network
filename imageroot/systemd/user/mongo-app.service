@@ -17,6 +17,7 @@ ExecStartPre=/bin/rm -f %t/mongo-app.pid %t/mongo-app.ctr-id
 ExecStart=/usr/bin/podman run --conmon-pidfile %t/mongo-app.pid \
     --cidfile %t/mongo-app.ctr-id --cgroups=no-conmon \
     --pod-id-file %t/unifi-network.pod-id --replace -d --name mongo-app \
+    --security-opt label=disable \
     --volume mongo-app:/data/db:z \
     --volume mongo-configdb:/data/configdb:z \
     --volume %S/state/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro \
