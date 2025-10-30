@@ -134,7 +134,7 @@ export default {
       },
       urlCheckInterval: null,
       host: "",
-      port: "",
+      port: "8080",
       isLetsEncryptEnabled: false,
       isHttpToHttpsEnabled: true,
       loading: {
@@ -213,7 +213,7 @@ export default {
     getConfigurationCompleted(taskContext, taskResult) {
       const config = taskResult.output;
       this.host = config.host;
-      this.port = config.port;
+      this.port = String(config.port);
       this.isLetsEncryptEnabled = config.lets_encrypt;
       this.isHttpToHttpsEnabled = config.http2https;
 
@@ -283,7 +283,7 @@ export default {
           action: taskAction,
           data: {
             host: this.host,
-            port: this.port,
+            port: parseInt(this.port),
             lets_encrypt: this.isLetsEncryptEnabled,
             http2https: this.isHttpToHttpsEnabled,
           },
