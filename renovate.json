@@ -27,9 +27,8 @@
             "allowedVersions": "<=18"
         },        
         {
-            "matchDatasources": ["docker"],
-            "matchPackageNames": ["docker.io/linuxserver/unifi-network"],
-            "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>.+)$"
+            "matchPackageNames": ["docker.io/linuxserver/unifi-network-application"],
+            "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>\\d+)$"
         }
     ]
 }
