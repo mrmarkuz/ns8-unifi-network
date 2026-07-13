@@ -7,7 +7,12 @@
         {
             "matchDatasources": ["docker"],
             "matchPackageNames": ["unifi-network-application"],
-            "versioning": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>\\d+)$"
+            "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>\\d+)$"
+        },
+        {
+            "matchDatasources": ["docker"],
+            "matchPackageNames": ["mongo"],
+            "allowedVersions": "8.0.*"
         }
     ]
 }
