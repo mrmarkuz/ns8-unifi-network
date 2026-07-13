@@ -10,6 +10,10 @@
             "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<revision>\\d+)$"
         },
         {
+            "versioning": "regex:^?(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)((\\.|-r)(?<build>\\d+))?-ls(?<revision>\\d+)$",
+            "matchPackageNames": ["/^(gh|ls)cr\\.io\\/linuxserver\\//"]
+        }
+        {
             "matchDatasources": ["docker"],
             "matchPackageNames": ["mongo"],
             "allowedVersions": "8.0.*"
