@@ -14,9 +14,7 @@
     "type": "object",
     "required": [
         "host",
-        "port",
-        "http2https",
-        "lets_encrypt"
+        "port"
     ],
     "properties": {
         "host": {
