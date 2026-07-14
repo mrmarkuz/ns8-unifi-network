@@ -5,7 +5,9 @@
     ],
     "packageRules": [
         {
+            "matchDatasources": ["docker"],
             "matchPackageNames": ["linuxserver/unifi-network-application"],
+            "dockerMaxPages": 1000,
             "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-ls(?<build>.+)$"
         },
         {
