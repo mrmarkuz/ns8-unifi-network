@@ -14,5 +14,12 @@ import agent
 data = json.load(sys.stdin)
 port = data.get('port',8080)
 
+# Setup default values
+host = data.get("host")
+h2hs = data.get("http2https", True)
+
+agent.set_env("TRAEFIK_HOST", host)
+agent.set_env("TRAEFIK_HTTP2HTTPS", h2hs)
+
 # Set Devices Port
 agent.set_env("PORT",port)
