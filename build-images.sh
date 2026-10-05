@@ -40,7 +40,7 @@ buildah config --entrypoint=/ \
     --label="org.nethserver.tcp-ports-demand=1" \
     --label="org.nethserver.rootfull=0" \
 	--label="org.nethserver.min-core=3.12.4-0" \
-    --label="org.nethserver.images=docker.io/linuxserver/unifi-network-application:10.4.57-ls140 docker.io/mongo:8.0.30" \
+    --label="org.nethserver.images=docker.io/linuxserver/unifi-network-application:10.6.106-ls148 docker.io/mongo:8.0.30" \
     "${container}"
 # Commit the image
 buildah commit "${container}" "${repobase}/${reponame}"
