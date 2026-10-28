@@ -1,8 +1,11 @@
 {
   "name": "Unifi Network Application",
   "description": {
-    "en": "Unifi Network Application is a software platform from Ubiquiti for managing networks, gateways, switches, and wireless access points.",
-    "de": "Unifi Network Application ist eine Software Plattform von Ubiquiti um Netzwerke, Gateways, Switches und Access Points zu verwalten."
+    "en": "Unifi Network Application is a software platform from Ubiquiti for managing networks, gateways, switches, and wireless access points",
+    "de": "UniFi Network Application ist eine Softwareplattform von Ubiquiti zur Verwaltung von Netzwerken, Gateways, Switches und Wireless Access Points",
+    "fr": "Unifi Network Application est une plateforme logicielle proposée par Ubiquiti pour la gestion de réseaux, de passerelles, de commutateurs et de points d’accès sans fil",
+    "it": "UniFi Network Application è una piattaforma software di Ubiquiti per la gestione di reti, gateway, switch e punti di accesso wireless",
+    "es": "UniFi Network Application es una plataforma de software de Ubiquiti para la gestión de redes, gateways, switches y puntos de acceso inalámbricos"
   },
   "categories": ["system_administration"],
   "authors": [
